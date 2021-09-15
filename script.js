@@ -30,6 +30,7 @@ class Bal{
 
 
 var bal1;
+var [xpos, ypos, xspeed, yspeed] = [250, 370, 0, 0];
 
 function setup() {
   createCanvas(600, 400);
@@ -42,4 +43,34 @@ function setup() {
 function draw() {
   background(sb);
   bal1.drawBall();
+
+  rect(xpos, ypos, 100, 20);
+	
+	if(xpos >= 0 && xpos + 50 <= 500) xpos += xspeed;
+}
+
+function keyPressed() {
+	switch(keyCode) {
+		case 37:
+		case 65:
+			xspeed = -2;
+			break;
+		case 39:
+		case 68:
+			xspeed = 2;
+			break;
+	}
+}
+
+function keyReleased() {
+	switch(keyCode) {
+		case 37:
+		case 65:
+			xspeed = 0;
+			break;
+		case 39:
+		case 68:
+			xspeed = 0;
+			break;
+	}
 }
