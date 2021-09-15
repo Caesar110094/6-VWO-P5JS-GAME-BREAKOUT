@@ -13,16 +13,16 @@ class Bal{
 
   drawBall(){
     fill(this.c)
-    ellipse(this.x, this.y,50,50);
+    ellipse(this.x, this.y,20,20);
     this.x = this.x + this.vx;
     this.y = this.y + this.vy;
  
 
-    if(this.x <= 25 || this.x >= 475) {
+    if(this.x <= 25 || this.x >= 585) {
       this.vx = this.vx * -1;
     }
 
-    if(this.y <= 25 || this.y >= 475) {
+    if(this.y <= 25 || this.y >= 385) {
       this.vy = this.vy * -1;
     }
   }
@@ -32,12 +32,14 @@ class Bal{
 var bal1;
 
 function setup() {
-  createCanvas(500, 500);
-  background(150);
+  createCanvas(600, 400);
+
+  sb = loadImage('Images/Background.jpg');
 
   bal1 = new Bal(30,200,50,50,5,5, "green");
 }
 
 function draw() {
+  background(sb);
   bal1.drawBall();
 }
