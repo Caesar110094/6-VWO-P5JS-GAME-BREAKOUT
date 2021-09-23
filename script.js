@@ -64,7 +64,7 @@ function draw() {
   
   let leftWall = 0;
   let rightWall = 500;
-  
+   
   stroke(150);
   line(leftWall, 0, leftWall, height);
   line(rightWall, 0, rightWall, height);
