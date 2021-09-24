@@ -1,43 +1,9 @@
-class Bal {
-
-  constructor(x, y, w, h, vx, vy, c) {
-    this.x = x;
-    this.y = y;
-    this.with = w;
-    this.height = h;
-    this.vx = vx;
-    this.vy = vy;
-    this.c = c;
-  }
-
-
-  drawBall() {
-    fill(this.c)
-    ellipse(this.x, this.y, 20, 20);
-    this.x = this.x + this.vx;
-    this.y = this.y + this.vy;
-
-
-    if (this.x <= 25 || this.x >= 585) {
-      this.vx = this.vx * -1;
-    }
-
-    if (this.y <= 25 || this.y >= 385) {
-      this.vy = this.vy * -1;
-    }
-  }
-  paddle() {
-    fill(this.c)
-    rect(xpos, ypos, 100, 20);
-
-    if (xpos >= 100 && xpos + 50 <= 500) xpos += xspeed;
-  }
-}
+let ball;
 
 var x;
 var y;
 var screen = 0
-var bal1, paddle, song;
+var ball1, paddle, song;
 var [xpos, ypos, xspeed, yspeed] = [250, 370, 0, 0];
 
 function preload() {
@@ -47,9 +13,9 @@ function preload() {
 function setup() {
   createCanvas(600, 400);
 
-  sb = loadImage('Images/Background.jpg');
+  sb = loadImage('Images/Background game.jpg');
 
-  bal1 = new Bal(30, 200, 50, 50, 5, 5, "green");
+  ball1 = new Ball(30, 200, 50, 50, 5, 5, "green");
 }
 
 function draw() {
@@ -60,22 +26,21 @@ function draw() {
     textAlign(CENTER);
     text('BREAKOUT', width / 2, height / 2)
   } else if (screen == 1)
-    background(sb);
-  
+  background(sb);
+
   let leftWall = 0;
-  let rightWall = 500;
-   
-  stroke(150);
-  line(leftWall, 0, leftWall, height);
-  line(rightWall, 0, rightWall, height);
-  
+  let rightWall = 499;
+
   let xc = constrain(mouseX, leftWall, rightWall);
 
 
-  bal1.drawBall();
+  ball1.drawBall();
   rect(xc, 350, 100, 20);
-  //if(xpos >= 20 && xpos + 50 <= 400) 
   xpos += xspeed;
+}
+
+function paddle() {
+ 
 }
 
 function mousePressed() {
