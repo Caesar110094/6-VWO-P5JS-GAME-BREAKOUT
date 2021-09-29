@@ -26,10 +26,4 @@ class Ball {
       this.vy = this.vy * -1;
     }
   }
-  paddle() {
-    fill(this.c)
-    rect(xpos, ypos, 100, 20);
-
-    if (xpos >= 100 && xpos + 50 <= 500) xpos += xspeed;
-  }
 }

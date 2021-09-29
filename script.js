@@ -1,14 +1,9 @@
-let ball;
-
+var allblocks = []
 var x;
 var y;
 var screen = 0
 var ball1, paddle, song;
 var [xpos, ypos, xspeed, yspeed] = [250, 370, 0, 0];
-
-function preload() {
-
-}
 
 function setup() {
   createCanvas(600, 400);
@@ -25,22 +20,28 @@ function draw() {
     fill(255)
     textAlign(CENTER);
     text('BREAKOUT', width / 2, height / 2)
-  } else if (screen == 1)
-  background(sb);
 
-  let leftWall = 0;
-  let rightWall = 499;
+  }
 
-  let xc = constrain(mouseX, leftWall, rightWall);
+  else if (screen == 1) {
+    background(sb);
+
+    let leftWall = 0;
+    let rightWall = 499;
+
+    let xc = constrain(mouseX, leftWall, rightWall);
+
+    ball1.drawBall();
+    rect(xc, 350, 100, 20);
+    xpos += xspeed;
 
 
-  ball1.drawBall();
-  rect(xc, 350, 100, 20);
-  xpos += xspeed;
-}
-
-function paddle() {
- 
+    allblocks.forEach((b) => {
+      b.draw();
+      rect(xc, 350, 100, 20);
+      xpos += xspeed;
+    });
+  }
 }
 
 function mousePressed() {
