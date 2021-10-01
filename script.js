@@ -2,8 +2,15 @@ var allblocks = []
 var x;
 var y;
 var screen = 0
-var ball1, paddle, song;
+var ball1, paddle;
 var [xpos, ypos, xspeed, yspeed] = [250, 370, 0, 0];
+var bricks = [];
+
+let song;
+
+function preload() {
+  song = loadSound('Tittle Screen.mp4');
+}
 
 function setup() {
   createCanvas(600, 400);
@@ -11,7 +18,12 @@ function setup() {
   sb = loadImage('Images/Background game.jpg');
 
   ball1 = new Ball(30, 200, 50, 50, 5, 5, "green");
+
+  for (let i = 0; i < 20; i++) {
+    bricks.push(new Brick());
+  }
 }
+
 
 function draw() {
   if (screen == 0) {
@@ -19,7 +31,8 @@ function draw() {
     background(96, 157, 255)
     fill(255)
     textAlign(CENTER);
-    text('BREAKOUT', width / 2, height / 2)
+    text('BREAKOUT', width / 2, height / 2);
+    song.loop();
 
   }
 
@@ -41,6 +54,7 @@ function draw() {
       rect(xc, 350, 100, 20);
       xpos += xspeed;
     });
+
   }
 }
 

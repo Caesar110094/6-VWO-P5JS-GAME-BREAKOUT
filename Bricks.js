@@ -1,12 +1,11 @@
-class Bricks() {
-  constructor (x, y) {
-  this.rx = x
-  this.ry = y
+class Brick() {
+
+  constructor(x, y, w, h){
+    this.x = x;
+    this.y = y;
+    this.with = w;
+    this.height = h;
   }
+
   
-  drawBricks() {
-    noStroke()
-    fill(255, 204, 100);
-    rect(this.rx, this.ry, 60, 25);
-  }
 }
