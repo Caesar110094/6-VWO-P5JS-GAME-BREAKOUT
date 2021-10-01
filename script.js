@@ -9,7 +9,7 @@ var bricks = [];
 let song;
 
 function preload() {
-  song = loadSound('Tittle Screen.mp4');
+  //song = loadSound('Music/Title Screen.mp4');
 }
 
 function setup() {
@@ -18,12 +18,24 @@ function setup() {
   sb = loadImage('Images/Background game.jpg');
 
   ball1 = new Ball(30, 200, 50, 50, 5, 5, "green");
-
-  for (let i = 0; i < 20; i++) {
-    bricks.push(new Brick());
-  }
+  
+  drawRow(20);
+  drawRow(50);
+  drawRow(80);
+ 
 }
 
+function drawRow(rowHeight){
+for (let i = 0; i < 10; i++) {
+    brickwidth = width / 10;
+    x = i * brickwidth;
+    y = rowHeight;
+    h = 20;   
+
+    bricks.push(new Brick(x + 10, y, brickwidth - 10,h));
+    console.log(bricks);
+  } 
+}
 
 function draw() {
   if (screen == 0) {
@@ -32,8 +44,7 @@ function draw() {
     fill(255)
     textAlign(CENTER);
     text('BREAKOUT', width / 2, height / 2);
-    song.loop();
-
+    //song.play();
   }
 
   else if (screen == 1) {
@@ -48,12 +59,18 @@ function draw() {
     rect(xc, 350, 100, 20);
     xpos += xspeed;
 
+    
 
-    allblocks.forEach((b) => {
+    bricks.forEach((b) => {      
       b.draw();
-      rect(xc, 350, 100, 20);
-      xpos += xspeed;
-    });
+    })
+
+
+    // allblocks.forEach((b) => {
+    //   b.draw();
+    //   rect(xc, 350, 100, 20);
+    //   xpos += xspeed;
+    // });
 
   }
 }

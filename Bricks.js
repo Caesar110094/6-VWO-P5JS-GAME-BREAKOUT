@@ -1,11 +1,14 @@
-class Brick() {
+class Brick {
 
-  constructor(x, y, w, h){
+  constructor(x, y, w, h) {
     this.x = x;
     this.y = y;
-    this.with = w;
-    this.height = h;
+    this.w = w;
+    this.h = h;
   }
 
-  
+  draw() {   
+    fill("pink");
+    rect(this.x, this.y, this.w, this.h);
+  }
 }
