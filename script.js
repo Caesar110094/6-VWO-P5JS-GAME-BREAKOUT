@@ -17,12 +17,14 @@ function setup() {
 
   sb = loadImage('Images/Background game.jpg');
 
+  go = loadImage('Images/Game Over.png');
+
   ball1 = new Ball(30, 200, 50, 50, 5, 5, "green");
 
   drawRow(20);
   drawRow(50);
   drawRow(80);
-  drawRow(100);
+  drawRow(110);
 }
 
 function drawRow(rowHeight) {
@@ -46,8 +48,7 @@ function draw() {
     text('BREAKOUT', width / 2, height / 2);
     //song.play();
   }
-
-  else if (screen == 1) {
+  if (screen == 1) {
     background(sb);
 
     let leftWall = 0;
@@ -64,33 +65,23 @@ function draw() {
     bricks.forEach((b) => {
       b.draw();
     })
-
-
     // allblocks.forEach((b) => {
     //   b.draw();
     //   rect(xc, 350, 100, 20);
     //   xpos += xspeed;
     // });
 
+
+  }
+
+  if (screen == 2) {
+    background(go);
+    textAlign(CENTER);
+    textSize(40);
+    text("GAME OVER", width / 2, height / 2);
   }
 }
 
-function mousePressed() {
-  if (screen == 0) {
-    screen = 1
-  } else if (screen == 1) {
-    if (mouseX > x && mouseX < x + 50 && mouseY > y && mouseY < y + 50) {
-      if (colorPicker == 0) {
-        screen = 2;
-      } else {
-        score += 1;
-        speed += .05;
-      }
-    }
-  } else if (screen == 2) {
-    screen = 0
-  }
-}
 
 function keyPressed() {
   switch (keyCode) {
@@ -102,6 +93,18 @@ function keyPressed() {
     case 68:
       xspeed = 10;
       break;
+  }
+
+  if (keyCode == 49) {
+    screen = 0;
+  }
+
+  if (keyCode == 50) {
+    screen = 1;
+  }
+
+  if (keyCode == 51) {
+    screen = 2;
   }
 }
 

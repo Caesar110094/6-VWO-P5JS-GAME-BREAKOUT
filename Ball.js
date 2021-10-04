@@ -3,7 +3,7 @@ class Ball {
   constructor(x, y, w, h, vx, vy, c) {
     this.x = x;
     this.y = y;
-    this.with = w;
+    this.w = w;
     this.height = h;
     this.vx = vx;
     this.vy = vy;
@@ -16,7 +16,6 @@ class Ball {
     ellipse(this.x, this.y, 20, 20);
     this.x = this.x + this.vx;
     this.y = this.y + this.vy;
-
 
     if (this.x <= 25 || this.x >= 585) {
       this.vx = this.vx * -1;
