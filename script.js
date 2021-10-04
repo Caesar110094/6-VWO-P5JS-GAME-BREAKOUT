@@ -18,23 +18,23 @@ function setup() {
   sb = loadImage('Images/Background game.jpg');
 
   ball1 = new Ball(30, 200, 50, 50, 5, 5, "green");
-  
+
   drawRow(20);
   drawRow(50);
   drawRow(80);
- 
+  drawRow(100);
 }
 
-function drawRow(rowHeight){
-for (let i = 0; i < 10; i++) {
+function drawRow(rowHeight) {
+  for (let i = 0; i < 10; i++) {
     brickwidth = width / 10;
     x = i * brickwidth;
     y = rowHeight;
-    h = 20;   
+    h = 20;
 
-    bricks.push(new Brick(x + 10, y, brickwidth - 10,h));
+    bricks.push(new Brick(x + 4.5, y, brickwidth - 10, h));
     console.log(bricks);
-  } 
+  }
 }
 
 function draw() {
@@ -59,9 +59,9 @@ function draw() {
     rect(xc, 350, 100, 20);
     xpos += xspeed;
 
-    
 
-    bricks.forEach((b) => {      
+
+    bricks.forEach((b) => {
       b.draw();
     })
 
