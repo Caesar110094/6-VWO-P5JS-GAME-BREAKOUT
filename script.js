@@ -58,12 +58,12 @@ function draw() {
 
     ball1.drawBall();
     rect(xc, 350, 100, 20);
-    xpos += xspeed;
-
+    xpos += xspeed;   
 
 
     bricks.forEach((b) => {
       b.draw();
+      b.checkCollision();
     })
     // allblocks.forEach((b) => {
     //   b.draw();
@@ -99,7 +99,7 @@ function keyPressed() {
     screen = 0;
   }
 
-  if (keyCode == 50) {
+  if (keyCode == 13) {
     screen = 1;
   }
 

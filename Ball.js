@@ -4,7 +4,7 @@ class Ball {
     this.x = x;
     this.y = y;
     this.w = w;
-    this.height = h;
+    this.h = h;
     this.vx = vx;
     this.vy = vy;
     this.c = c;
