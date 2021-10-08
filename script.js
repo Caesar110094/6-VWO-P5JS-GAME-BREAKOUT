@@ -74,6 +74,10 @@ function draw() {
 
   }
 
+  if (ball1.y >= 385) {
+    screen = 2;
+  }
+
   if (screen == 2) {
     background(go);
     textAlign(CENTER);
@@ -101,10 +105,6 @@ function keyPressed() {
 
   if (keyCode == 13) {
     screen = 1;
-  }
-
-  if (keyCode == 51) {
-    screen = 2;
   }
 }
 
