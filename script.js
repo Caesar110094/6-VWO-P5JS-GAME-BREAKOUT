@@ -1,8 +1,9 @@
 var allblocks = []
 var x;
 var y;
-var screen = 0
-var ball1, paddle;
+var screen = 1;
+var ball1;
+var paddle;
 var [xpos, ypos, xspeed, yspeed] = [250, 370, 0, 0];
 var bricks = [];
 
@@ -10,17 +11,20 @@ let song;
 
 function preload() {
   //song = loadSound('Music/Title Screen.mp4');
+  //game song = loadSound('Music/Game music.mp4')
+  //Death = loadSound('Sound/Death Sound.mp4');
+  //Colliedes = loadSound('Sound/Ball Colliedes.mp4');
 }
 
 function setup() {
   createCanvas(600, 400);
 
   sb = loadImage('Images/Background game.jpg');
-
   go = loadImage('Images/Game Over.png');
 
-  ball1 = new Ball(30, 200, 50, 50, 5, 5, "green");
-
+  ball1 = new Ball();
+  paddle = new Paddle();
+  
   drawRow(20);
   drawRow(50);
   drawRow(80);
@@ -35,54 +39,44 @@ function drawRow(rowHeight) {
     h = 20;
 
     bricks.push(new Brick(x + 4.5, y, brickwidth - 10, h));
-    console.log(bricks);
   }
 }
 
 function draw() {
   if (screen == 0) {
-
-    background(96, 157, 255)
-    fill(255)
+    background(96, 157, 255);
+    fill(255);
     textAlign(CENTER);
     text('BREAKOUT', width / 2, height / 2);
     //song.play();
   }
+
   if (screen == 1) {
     background(sb);
 
-    let leftWall = 0;
-    let rightWall = 499;
-
-    let xc = constrain(mouseX, leftWall, rightWall);
-
     ball1.drawBall();
-    rect(xc, 350, 100, 20);
-    xpos += xspeed;   
-
-
+    paddle.drawPaddle();
+    paddle.checkCollision();
+    
     bricks.forEach((b) => {
       b.draw();
       b.checkCollision();
     })
-    // allblocks.forEach((b) => {
-    //   b.draw();
-    //   rect(xc, 350, 100, 20);
-    //   xpos += xspeed;
-    // });
 
+    //game song.play();
 
   }
 
-  if (ball1.y >= 385) {
-    screen = 2;
-  }
+  // if (ball1.y >= 386) {
+  //   screen = 2;
+  // }
 
   if (screen == 2) {
     background(go);
     textAlign(CENTER);
     textSize(40);
     text("GAME OVER", width / 2, height / 2);
+    //Death.play();
   }
 }
 
