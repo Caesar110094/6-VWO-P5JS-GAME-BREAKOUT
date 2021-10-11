@@ -15,16 +15,15 @@ class Brick {
 
   checkCollision() {
     if (ball1.x < this.x + this.w && ball1.x + ball1.w > this.x &&ball1.y < this.y + this.h && ball1.y + ball1.h > this.y) {
-      // nu ook vberical
       this.c = "red"
-      
-      // 
+
+      // Tell the ball the position of the specific brick the ball has hit
       const index = bricks.indexOf(this);
-      // 
+      // When the brick has been hit by by the ball, remove the brick in question
       if (index > -1) {
         bricks.splice(index, 1);
       }
-      // 
+      // When the ball has hit the brick then change the ball in the opposite vertical direction from wich it hit the ball
       ball1.vy = ball1.vy * -1;
     }
     else {
