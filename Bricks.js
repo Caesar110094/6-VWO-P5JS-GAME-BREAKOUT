@@ -19,9 +19,9 @@ class Brick {
 
       // Tell the ball the position of the specific brick the ball has hit
       const index = bricks.indexOf(this);
-      // When the brick has been hit by by the ball, remove the brick in question
+      // Remove the brick in question
       if (index > -1) {
-        bricks.splice(index, 1);
+        bricks.splice(index, 1);        
       }
       // When the ball has hit the brick then change the ball in the opposite vertical direction from wich it hit the ball
       ball1.vy = ball1.vy * -1;

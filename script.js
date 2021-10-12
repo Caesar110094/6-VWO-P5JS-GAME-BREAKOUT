@@ -10,21 +10,21 @@ var bricks = [];
 let song;
 
 function preload() {
-  //song = loadSound('Music/Title Screen.mp4');
-  //game song = loadSound('Music/Game music.mp4')
-  //Death = loadSound('Sound/Death Sound.mp4');
-  //Colliedes = loadSound('Sound/Ball Colliedes.mp4');
+  sb = loadImage('Images/Background game.jpg');
+  go = loadImage('Images/Game Over.png');
+  ws = loadImage('Images/Winning.gif')
+  song = loadSound('Music/Title Screen.mp4');
+  gamesong = loadSound('Music/Game music.mp4')
+  death = loadSound('Sound/Death Sound.mp4');
+  colliedes = loadSound('Sound/Ball Colliedes.mp4');
 }
 
 function setup() {
   createCanvas(600, 400);
 
-  sb = loadImage('Images/Background game.jpg');
-  go = loadImage('Images/Game Over.png');
-
   ball1 = new Ball();
   paddle = new Paddle();
-  
+
   drawRow(20);
   drawRow(50);
   drawRow(80);
@@ -48,7 +48,7 @@ function draw() {
     fill(255);
     textAlign(CENTER);
     text('BREAKOUT', width / 2, height / 2);
-    //song.play();
+    song.play();
   }
 
   if (screen == 1) {
@@ -57,26 +57,34 @@ function draw() {
     ball1.drawBall();
     paddle.drawPaddle();
     paddle.checkCollision();
-    
+
     bricks.forEach((b) => {
       b.draw();
       b.checkCollision();
     })
 
-    //game song.play();
+    gamesong.play();
 
   }
 
-  // if (ball1.y >= 386) {
-  //   screen = 2;
-  // }
+  if (ball1.y >= 386) {
+    screen = 2;
+   }
 
   if (screen == 2) {
     background(go);
     textAlign(CENTER);
     textSize(40);
     text("GAME OVER", width / 2, height / 2);
-    //Death.play();
+    death.play();
+  }
+
+  if (bricks.length === 0) { 
+   screen = 3;
+  }
+
+  if (screen == 3) {
+    background(ws)
   }
 }
 
